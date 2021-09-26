@@ -1,0 +1,25 @@
+@import "../../node_modules/react-grid-layout/css/styles.css";
+@import "../../node_modules/react-resizable/css/styles.css";
+@import "./Header.scss";
+@import "./Layout.scss";
+@import "./Excel.scss";
+.App {
+  text-align: center;
+}
+
+.react-grid-item {
+  background: red;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #ccc;
+  border-radius: 5px;
+}
