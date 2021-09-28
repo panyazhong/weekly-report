@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import "./style/App.scss";
 import "../node_modules/antd/dist/antd.css";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import Router from "./router";
 import reportWebVitals from "./reportWebVitals";
 

@@ -3,6 +3,7 @@ import Layout from "../views/Layout";
 import ReactGridLayout from "../views/ReactGridLayout";
 import Dashboard from "../views/Dashboard";
 import ExcelRead from "../views/Excel";
+import BraftEditor from "../views/BraftEditor";
 
 export const router = [
   {
@@ -44,6 +45,14 @@ export const router = [
       },
     ],
   },
+  {
+    name: "BraftEditor",
+    path: "/braft-editor",
+    component: BraftEditor,
+    meta: {
+      title: "BraftEditor",
+    },
+  },
 ];
 
 interface metaItem {
@@ -60,37 +69,29 @@ export interface routerItem {
 }
 
 const Router = () => {
-  const RouteList = router.map((r: routerItem, index: number) => {
+  let RouteList: any[] = [];
+  router.forEach((r: routerItem, index: number) => {
     if (r.redirect) {
-      return (
+      RouteList.push(
         <Route exact path={r.path} key={index}>
           <Redirect to={r.redirect}></Redirect>
         </Route>
       );
-    } else {
-      if (r.children) {
-        const childList = r.children.map((child: routerItem) => {
-          return (
-            <Route
-              exact
-              path={child.path}
-              component={child.component}
-              key={child.name}
-            ></Route>
-          );
-        });
-
-        return <Route>{childList}</Route>;
-      } else {
-        return (
+    } else if (r.children) {
+      r.children.forEach((child: routerItem, childIndex: number) => {
+        RouteList.push(
           <Route
             exact
-            path={r.path}
-            component={r.component}
-            key={index}
+            path={child.path}
+            component={child.component}
+            key={`${index}-${childIndex}`}
           ></Route>
         );
-      }
+      });
+    } else {
+      RouteList.push(
+        <Route exact path={r.path} key={index} component={r.component}></Route>
+      );
     }
   });
 

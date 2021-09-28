@@ -24,6 +24,7 @@ const Language: LanguageProp = {
 export const DataContext = createContext({});
 
 const Layout = (props: any) => {
+  console.log(props);
   const [locale, setLocale] = useState<LocaleType>(LocaleType.en);
 
   useEffect(() => {
@@ -39,6 +40,7 @@ const Layout = (props: any) => {
     <DataContext.Provider value={{ locale, setLocale }}>
       <ConfigProvider locale={Language[locale]}>
         <Header></Header>
+
         <div className={"layout-box"}>{props.children}</div>
       </ConfigProvider>
     </DataContext.Provider>

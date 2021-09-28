@@ -3,6 +3,12 @@
 @import "./Header.scss";
 @import "./Layout.scss";
 @import "./Excel.scss";
+@import "./editor.scss";
+
+@import "codemirror/lib/codemirror.css";
+@import "codemirror/theme/material.css";
+@import "codemirror/theme/rubyblue.css";
+
 .App {
   text-align: center;
 }
