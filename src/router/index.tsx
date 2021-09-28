@@ -4,6 +4,7 @@ import ReactGridLayout from "../views/ReactGridLayout";
 import Dashboard from "../views/Dashboard";
 import ExcelRead from "../views/Excel";
 import BraftEditor from "../views/BraftEditor";
+import UserSetting from "../views/UserSetting";
 
 export const router = [
   {
@@ -53,10 +54,19 @@ export const router = [
       title: "BraftEditor",
     },
   },
+  {
+    name: "UserSetting",
+    path: "/user-setting",
+    component: UserSetting,
+    meta: {
+      hidden: true,
+    },
+  },
 ];
 
 interface metaItem {
-  title: string;
+  title?: string;
+  hidden?: boolean;
 }
 
 export interface routerItem {

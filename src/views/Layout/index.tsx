@@ -26,18 +26,21 @@ export const DataContext = createContext({});
 const Layout = (props: any) => {
   console.log(props);
   const [locale, setLocale] = useState<LocaleType>(LocaleType.en);
+  const [username, setUsername] = useState<string>("");
 
   useEffect(() => {
     const res = getStorage("locale") as LocaleType;
 
     setLocale(res);
+
+    setUsername("dapan");
   }, []);
   useEffect(() => {
     setStorage("locale", locale);
   }, [locale]);
 
   return (
-    <DataContext.Provider value={{ locale, setLocale }}>
+    <DataContext.Provider value={{ locale, setLocale, username }}>
       <ConfigProvider locale={Language[locale]}>
         <Header></Header>
 

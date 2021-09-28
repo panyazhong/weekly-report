@@ -25,7 +25,7 @@ const HeaderMenu = (props: any) => {
   console.log(router);
 
   const MenuItems = router.map((r: routerItem) => {
-    if (r.meta?.title && !r.children) {
+    if (r.meta?.title && !r.children && !r.meta.hidden) {
       return (
         <Menu.Item
           key={r.path}
