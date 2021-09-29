@@ -12,7 +12,7 @@ interface LanguageItem {
 }
 
 const RightSet = () => {
-  const { locale, setLocale, username } = useContext<any>(DataContext);
+  const { locale, setLocale, setUsername } = useContext<any>(DataContext);
 
   const Language: LanguageItem[] = [
     {
@@ -29,6 +29,11 @@ const RightSet = () => {
     setLocale(val);
   };
 
+  const logOut = () => {
+    setUsername("");
+    sessionStorage.removeItem("userInfo");
+  };
+
   const UserSetting = () => {
     return (
       <Menu>
@@ -36,13 +41,7 @@ const RightSet = () => {
           <Link to={"/user-setting"}>个人设置</Link>
         </Menu.Item>
         <Menu.Item key="1">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.aliyun.com"
-          >
-            登出
-          </a>
+          <a onClick={logOut}>登出</a>
         </Menu.Item>
       </Menu>
     );

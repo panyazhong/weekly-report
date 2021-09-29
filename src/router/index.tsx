@@ -5,6 +5,7 @@ import Dashboard from "../views/Dashboard";
 import ExcelRead from "../views/Excel";
 import BraftEditor from "../views/BraftEditor";
 import UserSetting from "../views/UserSetting";
+import EchartsExample from "../views/Echarts";
 
 export const router = [
   {
@@ -60,6 +61,14 @@ export const router = [
     component: UserSetting,
     meta: {
       hidden: true,
+    },
+  },
+  {
+    name: "Echarts",
+    path: "/echarts",
+    component: EchartsExample,
+    meta: {
+      title: "Echarts",
     },
   },
 ];

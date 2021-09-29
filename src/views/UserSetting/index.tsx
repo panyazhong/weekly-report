@@ -1,5 +1,5 @@
 import { Form, Input, Button } from "antd";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const formItemLayout = {
   labelCol: { span: 6 },
@@ -7,17 +7,29 @@ const formItemLayout = {
 };
 
 const UserSetting = () => {
+  const userInfoRef = useRef<any>();
   const [form] = Form.useForm();
 
   useEffect(() => {
     form.setFieldsValue({
       username: "dapan",
     });
-  });
+    getUserInfo();
+
+    if (userInfoRef.current) {
+      form.setFieldsValue(JSON.parse(userInfoRef.current));
+    }
+  }, []);
+
+  const getUserInfo = () => {
+    const info = sessionStorage.getItem("userInfo");
+    userInfoRef.current = info;
+  };
 
   const submitForm = (vals: any) => {
-    console.log(vals);
+    sessionStorage.setItem("userInfo", JSON.stringify(vals));
   };
+
   return (
     <div className={"user-info"}>
       <p className={"edit-title"}>信息编辑</p>

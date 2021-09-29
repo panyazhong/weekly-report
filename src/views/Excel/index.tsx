@@ -1,5 +1,5 @@
 import XLSX from "xlsx";
-import { Upload, Table } from "antd";
+import { Upload, Table, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import { UploadChangeParam } from "antd/lib/upload";
 import { useState } from "react";
@@ -8,34 +8,14 @@ import { ColumnsType } from "antd/es/table";
 const { Dragger } = Upload;
 
 interface dataItem {
-  key: number;
-  name: string;
-  age: number;
-  address: string;
+  [key: string]: string | number;
 }
-
-const columns: ColumnsType<dataItem> = [
-  {
-    title: "姓名",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "年龄",
-    dataIndex: "age",
-    key: "age",
-  },
-  {
-    title: "住址",
-    dataIndex: "address",
-    key: "address",
-  },
-];
 
 const ExcelRead = () => {
   const [dataSource, setDataSource] = useState<dataItem[] | undefined>(
     undefined
   );
+  const [columns, setColumns] = useState<any>();
 
   const props = {
     name: "file",
@@ -45,7 +25,13 @@ const ExcelRead = () => {
 
   const fileChange = (e: UploadChangeParam) => {
     const { file } = e;
+    const { status } = file;
 
+    if (status === "done") {
+      message.success(`${file.name} file uploaded successfully.`);
+    } else if (status === "error") {
+      message.error(`${file.name} file upload failed.`);
+    }
     const reader = new FileReader();
     reader.readAsBinaryString((file as any).originFileObj);
     reader.onload = (e) => {
@@ -58,20 +44,36 @@ const ExcelRead = () => {
       const { SheetNames, Sheets } = res;
 
       SheetNames.forEach((name: string) => {
-        const json = XLSX.utils.sheet_to_json(Sheets[name]);
-        console.log(json);
-        const data = json.map((item: any, index: number) => {
-          const d: dataItem = {
+        const json: any[] = XLSX.utils.sheet_to_json(Sheets[name]);
+
+        const keys = Object.keys(json[0]);
+        const cols = keys.map((key: string) => {
+          return {
+            title: key,
+            dataIndex: key,
+            key: key,
+            width: "100px",
+          };
+        });
+        setColumns(cols);
+        const data = json.slice(0, 10).map((item: any, index: number) => {
+          const d = {
             key: index,
-            name: item["姓名"],
-            age: item["年龄"],
-            address: item["班级"],
+            ...item,
           };
 
           return d;
         });
 
         setDataSource(data);
+
+        // const sheet = XLSX.utils.json_to_sheet(data);
+
+        // const wb = XLSX.utils.book_new();
+
+        // XLSX.utils.book_append_sheet(wb, sheet, "Sheet");
+
+        // XLSX.writeFile(wb, "test.xlsx");
       });
     };
   };
@@ -92,9 +94,10 @@ const ExcelRead = () => {
           </p>
         </Dragger>
       </div>
-      <Table<dataItem>
+      <Table
         dataSource={dataSource}
         columns={columns}
+        scroll={{ x: 1300 }}
         size={"small"}
         bordered
       />
