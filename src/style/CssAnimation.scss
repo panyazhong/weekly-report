@@ -1,0 +1,122 @@
+.box-display {
+  .animation-flex {
+    display: flex;
+    .animation-box {
+      width: 50px;
+      height: 50px;
+      border: 1px solid orange;
+      background: burlywood;
+      animation: sk-cube-grid-scale-delay 1.3s infinite ease-in-out;
+    }
+    .animation-1 {
+      animation-delay: 0.2s;
+    }
+    .animation-2 {
+      animation-delay: 0.3s;
+    }
+    .animation-3 {
+      animation-delay: 0.4s;
+    }
+    .animation-4 {
+      animation-delay: 0.5s;
+    }
+    .animation-5 {
+      animation-delay: 0.6s;
+    }
+    .animation-6 {
+      animation-delay: 0.7s;
+    }
+    .animation-7 {
+      animation-delay: 0.8s;
+    }
+    .animation-8 {
+      animation-delay: 0.9s;
+    }
+    .animation-9 {
+      animation-delay: 1s;
+    }
+    @keyframes sk-cube-grid-scale-delay {
+      0%,
+      70%,
+      100% {
+        transform: scale3D(1, 1, 1);
+      }
+      35% {
+        transform: scale3D(0, 0, 1);
+      }
+    }
+  }
+}
+.otonami-box {
+  display: flex;
+  .otonami-item {
+    width: 10px;
+    height: 100px;
+    background: burlywood;
+    border-radius: 5px;
+    margin-right: 5px;
+  }
+  .otonami-3 {
+    transform: scale3d(1, 0.1, 1);
+    animation-delay: 1s;
+    animation: otonami-change-height 2.5s 1s infinite linear;
+  }
+  .otonami-4 {
+    transform: scale3d(1, 0.1, 1);
+    animation-delay: 0.8s;
+    animation: otonami-change-height 2.5s 0.8s infinite linear;
+  }
+  .otonami-5 {
+    transform: scale3d(1, 0.1, 1);
+    animation-delay: 0.6s;
+    animation: otonami-change-height 2.5s 0.6s infinite linear;
+  }
+  .otonami-6 {
+    transform: scale3d(1, 0.1, 1);
+    animation-delay: 0.4s;
+    animation: otonami-change-height 2.5s 0.4s infinite linear;
+  }
+  .otonami-7 {
+    transform: scale3d(1, 0.1, 1);
+    animation-delay: 0.2s;
+    animation: otonami-change-height 2.5s 0.2s infinite linear;
+  }
+  .otonami-8 {
+    transform: scale3d(1, 0.1, 1);
+    animation: otonami-change-height 2.5s 0s infinite linear;
+  }
+  .otonami-9 {
+    transform: scale3d(1, 0.1, 1);
+    animation-delay: 0.2s;
+    animation: otonami-change-height 2.5s 0.2s infinite linear;
+  }
+  .otonami-10 {
+    transform: scale3d(1, 0.1, 1);
+    animation-delay: 0.4s;
+    animation: otonami-change-height 2.5s 0.4s infinite linear;
+  }
+  .otonami-11 {
+    transform: scale3d(1, 0.1, 1);
+    animation-delay: 0.6s;
+    animation: otonami-change-height 2.5s 0.6s infinite linear;
+  }
+  .otonami-12 {
+    transform: scale3d(1, 0.1, 1);
+    animation-delay: 0.8s;
+    animation: otonami-change-height 2.5s 0.8s infinite linear;
+  }
+  .otonami-13 {
+    transform: scale3d(1, 0.1, 1);
+    animation-delay: 1s;
+    animation: otonami-change-height 2.5s 1s infinite linear;
+  }
+  @keyframes otonami-change-height {
+    0%,
+    100% {
+      transform: scaleY(0.1);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+}

@@ -14,4 +14,7 @@
   left: 0;
   z-index: 9;
   background: #fff;
+  .menu-box {
+    width: calc(100% - 200px);
+  }
 }

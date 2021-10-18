@@ -1,74 +1,83 @@
-import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
-import Layout from "../views/Layout";
-import ReactGridLayout from "../views/ReactGridLayout";
-import Dashboard from "../views/Dashboard";
-import ExcelRead from "../views/Excel";
-import BraftEditor from "../views/BraftEditor";
-import UserSetting from "../views/UserSetting";
-import EchartsExample from "../views/Echarts";
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+import Layout from '../views/Layout';
+import ReactGridLayout from '../views/ReactGridLayout';
+import Dashboard from '../views/Dashboard';
+import ExcelRead from '../views/Excel';
+import BraftEditor from '../views/BraftEditor';
+import UserSetting from '../views/UserSetting';
+import EchartsExample from '../views/Echarts';
+import CssAnimation from '../views/CssAnimation';
 
 export const router = [
   {
-    name: "index",
-    path: "/",
-    redirect: "/dashboard",
+    name: 'index',
+    path: '/',
+    redirect: '/dashboard',
   },
   {
-    name: "dashboard",
-    path: "/dashboard",
+    name: 'dashboard',
+    path: '/dashboard',
     component: Dashboard,
     meta: {
-      title: "概览",
+      title: '概览',
     },
   },
   {
-    name: "reactGridLayout",
-    path: "/react-grid-layout",
+    name: 'reactGridLayout',
+    path: '/react-grid-layout',
     component: ReactGridLayout,
     meta: {
-      title: "弹性布局",
+      title: '弹性布局',
     },
   },
   {
-    name: "excel",
-    path: "/excel",
+    name: 'excel',
+    path: '/excel',
     component: ReactGridLayout,
     meta: {
-      title: "excel",
+      title: 'excel',
     },
     children: [
       {
-        name: "excelRead",
-        path: "/excel/excel-read",
+        name: 'excelRead',
+        path: '/excel/excel-read',
         component: ExcelRead,
         meta: {
-          title: "excel表格",
+          title: 'excel表格',
         },
       },
     ],
   },
   {
-    name: "BraftEditor",
-    path: "/braft-editor",
+    name: 'BraftEditor',
+    path: '/braft-editor',
     component: BraftEditor,
     meta: {
-      title: "BraftEditor",
+      title: 'BraftEditor',
     },
   },
   {
-    name: "UserSetting",
-    path: "/user-setting",
+    name: 'UserSetting',
+    path: '/user-setting',
     component: UserSetting,
     meta: {
       hidden: true,
     },
   },
   {
-    name: "Echarts",
-    path: "/echarts",
+    name: 'Echarts',
+    path: '/echarts',
     component: EchartsExample,
     meta: {
-      title: "Echarts",
+      title: 'Echarts',
+    },
+  },
+  {
+    name: 'CssAnimation',
+    path: '/css-animation',
+    component: CssAnimation,
+    meta: {
+      title: 'css动画',
     },
   },
 ];

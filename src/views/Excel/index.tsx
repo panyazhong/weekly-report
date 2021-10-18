@@ -1,9 +1,9 @@
-import XLSX from "xlsx";
-import { Upload, Table, message } from "antd";
-import { InboxOutlined } from "@ant-design/icons";
-import { UploadChangeParam } from "antd/lib/upload";
-import { useState } from "react";
-import { ColumnsType } from "antd/es/table";
+import XLSX from 'xlsx';
+import { Upload, Table, message } from 'antd';
+import { InboxOutlined } from '@ant-design/icons';
+import { UploadChangeParam } from 'antd/lib/upload';
+import { useState } from 'react';
+// import { ColumnsType } from "antd/es/table";
 
 const { Dragger } = Upload;
 
@@ -18,18 +18,18 @@ const ExcelRead = () => {
   const [columns, setColumns] = useState<any>();
 
   const props = {
-    name: "file",
+    name: 'file',
     multiple: true,
-    action: "",
+    action: '',
   };
 
   const fileChange = (e: UploadChangeParam) => {
     const { file } = e;
     const { status } = file;
 
-    if (status === "done") {
+    if (status === 'done') {
       message.success(`${file.name} file uploaded successfully.`);
-    } else if (status === "error") {
+    } else if (status === 'error') {
       message.error(`${file.name} file upload failed.`);
     }
     const reader = new FileReader();
@@ -38,7 +38,7 @@ const ExcelRead = () => {
       const data = e.target?.result;
 
       const res = XLSX.read(data, {
-        type: "binary",
+        type: 'binary',
       });
 
       const { SheetNames, Sheets } = res;
@@ -52,7 +52,7 @@ const ExcelRead = () => {
             title: key,
             dataIndex: key,
             key: key,
-            width: "100px",
+            width: '100px',
           };
         });
         setColumns(cols);
@@ -80,7 +80,7 @@ const ExcelRead = () => {
 
   return (
     <div>
-      <div className={"upload-box"}>
+      <div className={'upload-box'}>
         <Dragger {...props} onChange={fileChange}>
           <p className="ant-upload-drag-icon">
             <InboxOutlined />
@@ -98,7 +98,7 @@ const ExcelRead = () => {
         dataSource={dataSource}
         columns={columns}
         scroll={{ x: 1300 }}
-        size={"small"}
+        size={'small'}
         bordered
       />
       ;

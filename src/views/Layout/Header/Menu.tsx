@@ -1,13 +1,13 @@
-import { Menu } from "antd";
-import { MailOutlined } from "@ant-design/icons";
-import { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import { router, routerItem } from "../../../router";
+import { Menu } from 'antd';
+import { MailOutlined } from '@ant-design/icons';
+import { useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import { router, routerItem } from '../../../router';
 
 const { SubMenu } = Menu;
 
 const HeaderMenu = (props: any) => {
-  const [current, setCurrent] = useState<string>("mail");
+  const [current, setCurrent] = useState<string>('mail');
   const history = useHistory(),
     location = useLocation(),
     { pathname } = location;
@@ -59,9 +59,11 @@ const HeaderMenu = (props: any) => {
   });
 
   return (
-    <Menu selectedKeys={[current]} mode="horizontal">
-      {MenuItems}
-    </Menu>
+    <div className={'menu-box'}>
+      <Menu selectedKeys={[current]} mode="horizontal">
+        {MenuItems}
+      </Menu>
+    </div>
   );
 };
 

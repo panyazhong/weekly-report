@@ -1,15 +1,16 @@
-@import "../../node_modules/react-grid-layout/css/styles.css";
-@import "../../node_modules/react-resizable/css/styles.css";
-@import "./Header.scss";
-@import "./Layout.scss";
-@import "./Excel.scss";
-@import "./editor.scss";
-@import "./UserSetting.scss";
-@import "./Echarts.scss";
+@import '../../node_modules/react-grid-layout/css/styles.css';
+@import '../../node_modules/react-resizable/css/styles.css';
+@import './Header.scss';
+@import './Layout.scss';
+@import './Excel.scss';
+@import './editor.scss';
+@import './UserSetting.scss';
+@import './Echarts.scss';
+@import './CssAnimation.scss';
 
-@import "codemirror/lib/codemirror.css";
-@import "codemirror/theme/material.css";
-@import "codemirror/theme/rubyblue.css";
+@import 'codemirror/lib/codemirror.css';
+@import 'codemirror/theme/material.css';
+@import 'codemirror/theme/rubyblue.css';
 
 .App {
   text-align: center;
