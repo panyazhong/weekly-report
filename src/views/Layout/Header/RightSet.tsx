@@ -1,7 +1,7 @@
-import { Select, Avatar, Dropdown, Menu } from "antd";
+import { Select, Avatar, Dropdown, Menu, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { useContext } from "react";
-import { DataContext, LocaleType } from "../index";
+import { DataContext, LocaleType, ThemeType } from "../index";
 import { Link } from "react-router-dom";
 
 const { Option } = Select;
@@ -12,7 +12,8 @@ interface LanguageItem {
 }
 
 const RightSet = () => {
-  const { locale, setLocale, setUsername } = useContext<any>(DataContext);
+  const { locale, setLocale, setUsername, theme, setTheme } =
+    useContext<any>(DataContext);
 
   const Language: LanguageItem[] = [
     {
@@ -25,6 +26,17 @@ const RightSet = () => {
     },
   ];
 
+  const Themes: LanguageItem[] = [
+    {
+      name: "LightThems",
+      val: ThemeType.light,
+    },
+    {
+      name: "darkThems",
+      val: ThemeType.dark,
+    },
+  ];
+
   const changeLocale = (val: LocaleType) => {
     setLocale(val);
   };
@@ -32,6 +44,10 @@ const RightSet = () => {
   const logOut = () => {
     setUsername("");
     sessionStorage.removeItem("userInfo");
+  };
+
+  const changeTheme = (val: string) => {
+    setTheme(val);
   };
 
   const UserSetting = () => {
@@ -47,7 +63,7 @@ const RightSet = () => {
     );
   };
   return (
-    <div>
+    <div className={"right-set"}>
       <Dropdown overlay={UserSetting}>
         <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
           <Avatar
@@ -62,6 +78,16 @@ const RightSet = () => {
           return (
             <Option value={lanaguage.val} key={lanaguage.val}>
               {lanaguage.name}
+            </Option>
+          );
+        })}
+      </Select>
+
+      <Select bordered={false} onChange={changeTheme} value={theme}>
+        {Themes.map((theme: LanguageItem) => {
+          return (
+            <Option value={theme.val} key={theme.val}>
+              {theme.name}
             </Option>
           );
         })}

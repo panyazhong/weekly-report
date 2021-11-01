@@ -8,6 +8,10 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import Router from "./router";
 import reportWebVitals from "./reportWebVitals";
 
+import { initTheme } from "./Theme/theme";
+
+initTheme("light");
+
 ReactDOM.render(
   // <React.StrictMode>
   <Router />,
