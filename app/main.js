@@ -1,13 +1,36 @@
+const path = require("path");
 const { app, BrowserWindow, Menu } = require("electron");
+const nedb = require("nedb");
+
+const SettingDB = new nedb({
+  filename: path.join(app.getPath("userData"), "NEDB/SettingDB.db"),
+  autoload: true,
+});
+
+global.nedb = {
+  SettingDB,
+};
 
 let win;
 
 function createWindow() {
   // 创建浏览器窗口。
-  win = new BrowserWindow({ width: 800, height: 600 });
+  win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: false,
+      enableRemoteModule: true,
+      webSecurity: false,
+      preload: path.join(__dirname, "preload.js"),
+    },
+  });
 
   // 然后加载应用的 index.html。
-  win.loadURL("http://localhost:3000");
+  win.loadURL("http://localhost:5000");
+
+  win.webContents.openDevTools();
 
   // 当 window 被关闭，这个事件会被触发。
   win.on("closed", () => {

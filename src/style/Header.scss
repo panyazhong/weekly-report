@@ -22,5 +22,8 @@
   .right-set {
     display: flex;
     align-items: center;
+    .ant-select {
+      min-width: 100px;
+    }
   }
 }

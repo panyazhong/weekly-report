@@ -1,0 +1,5 @@
+# 配置检查更新的地址(全量更新) electron-builder会根据本地version和服务器yml文件version匹配
+provider: 'generic'
+#url: 'http://localhost:8000'
+url: 'http://47.100.84.141/innovate_update/finone_update'
+channel: 'latest'

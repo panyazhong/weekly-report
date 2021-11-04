@@ -1,5 +1,6 @@
-import { Form, Input, Button } from 'antd';
-import { useEffect, useRef } from 'react';
+import { Form, Input, Button, message } from "antd";
+import { useEffect, useRef } from "react";
+import { insert } from "../../utils/DB";
 
 const formItemLayout = {
   labelCol: { span: 6 },
@@ -12,7 +13,7 @@ const UserSetting = () => {
 
   useEffect(() => {
     form.setFieldsValue({
-      username: 'dapan',
+      username: "dapan",
     });
     getUserInfo();
 
@@ -22,17 +23,24 @@ const UserSetting = () => {
   }, []);
 
   const getUserInfo = () => {
-    const info = sessionStorage.getItem('userInfo');
+    const info = sessionStorage.getItem("userInfo");
     userInfoRef.current = info;
   };
 
-  const submitForm = (vals: any) => {
-    sessionStorage.setItem('userInfo', JSON.stringify(vals));
+  const submitForm = async (vals: any) => {
+    sessionStorage.setItem("userInfo", JSON.stringify(vals));
+
+    try {
+      const res = await insert("SettingDB", vals);
+      message.success("add success");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <div className={'user-info'}>
-      <p className={'edit-title'}>信息编辑</p>
+    <div className={"user-info"}>
+      <p className={"edit-title"}>信息编辑</p>
       <Form form={form} {...formItemLayout} onFinish={submitForm}>
         <Form.Item
           name="username"
@@ -43,7 +51,7 @@ const UserSetting = () => {
             },
           ]}
         >
-          <Input disabled value={'dapan'}></Input>
+          <Input disabled value={"dapan"}></Input>
         </Form.Item>
         <Form.Item
           name="nickanme"
