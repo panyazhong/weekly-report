@@ -58,6 +58,7 @@ export const insert = (
       if (err) {
         reject(err);
       } else {
+        console.log("res", ret);
         resolve(ret);
       }
     });

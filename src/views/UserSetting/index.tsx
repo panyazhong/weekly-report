@@ -32,6 +32,7 @@ const UserSetting = () => {
 
     try {
       const res = await insert("SettingDB", vals);
+      console.log(res);
       message.success("add success");
     } catch (error) {
       console.log(error);
