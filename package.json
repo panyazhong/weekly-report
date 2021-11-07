@@ -63,7 +63,7 @@
     "@types/react-router-dom": "^5.1.9",
     "concurrently": "^6.3.0",
     "cross-env": "^7.0.3",
-    "electron": "^15.3.0",
+    "electron": "^12.2.2",
     "react-app-rewired": "^2.1.8",
     "react-monaco-editor": "^0.45.0",
     "wait-on": "^6.0.0"

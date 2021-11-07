@@ -1,8 +1,8 @@
 const electron = (window as any).electron;
 const remote = (window as any).remote;
 export const getDB = (dbName: string) => {
-  console.log("remote", remote);
-  return remote.getGlobal("nedb")[dbName];
+  console.log('remote', remote);
+  return remote.getGlobal('nedb')[dbName];
 };
 
 export interface DB_PARAM_PROPS {
@@ -58,7 +58,26 @@ export const insert = (
       if (err) {
         reject(err);
       } else {
-        console.log("res", ret);
+        console.log('res', ret);
+        resolve(ret);
+      }
+    });
+  });
+};
+
+export const update = (
+  dbName: string,
+  query: any,
+  params: any,
+  options: any
+): Promise<Error | number> => {
+  const DB = getDB(dbName);
+
+  return new Promise((resolve, reject) => {
+    DB.update(query, params, options, (err: Error, ret: number) => {
+      if (err) {
+        reject(err);
+      } else {
         resolve(ret);
       }
     });
